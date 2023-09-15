@@ -75,3 +75,15 @@ wrongboard = {'1h':'bbishop', '2a': 'wqueen', '2g':'wbishop', '9h':'wqueen'}
 #isValidChessBoard(rightboard)
 isValidChessBoard(rightboard)
 # %%
+before, sep, after = 'hello, world!'.partition(' ')
+# we can separate the string into 3 parts (because of the partition() method ) and allocate them into different variables.
+# In this case, before = 'hello,', sep = ' ', after = 'world!'.
+# %%
+def printPicnic(itemDict, leftwidth, rightwidth):
+    print('PICNIC ITEMS'.center(leftwidth + rightwidth, '-')) # print the PICNIC ITEMS in the middle as a title.
+    for k, v in itemDict.items(): # k for keys, v for values.
+        print(k.ljust(leftwidth, '.'), str(v).rjust(rightwidth))
+
+picnicItem = {'sandwitches': 4, 'apples': 12,'sushi': 9, 'new jeans': 5}
+printPicnic(picnicItem, 20, 6)
+# %%
