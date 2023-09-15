@@ -30,25 +30,46 @@ print('-apple pie     '+ str(total_brought(allGuest,'apple pie')))
 
 # %%
 # validate the chessboard
-# 1. the board should not more than 16 pieces, and should not more than 1 queen.
-# 2. the piece should not exceed the chessboard, for example, 9z is not available.
+# 1. the board should not more than 16 pieces, and should not more than 1 queen. (done)
+# 2. the piece should not exceed the chessboard, for example, 9z is not available. (done)
 # 3. using boolean as an output to check the status of chessboard.
 # name: pawn x 8, bishop x 2, knight x 2, rook x 2, queen x1, king x 1
 def isValidChessBoard(theboard):
+    # acquiring the value for conditional expression.
     num_queen_black = 0
     num_queen_white = 0
+    num_black = 0
+    num_white = 0
     for piece in theboard.values(): # using .values() to acquire the value after colon
         if piece == 'bqueen':
             num_queen_black += 1
-        if piece == 'wqueen':
+        elif piece == 'wqueen':
             num_queen_white += 1
+        if piece in ['bqueen','bpawn', 'bbishop', 'bknight', 'brook', 'bking']:
+            num_black += 1
+        elif piece in ['wqueen', 'wpawn', 'wbishop', 'wknight', 'wrook', 'wking']:
+            num_white += 1      
+
+    for location in theboard.keys():
+        firstcharacter = location[0]
+        secondcharacter = location[1]
     
-    if num_queen_white or num_queen_black > 1:
-        print('it\'s unreal')
-    return num_queen_black, num_queen_white
-
-
+    # to return the True or False
+    if num_queen_white > 1 or num_queen_black > 1:
+        return False
+    if num_black > 16 or num_white > 16:
+        return False
+    if firstcharacter not in '12345678':
+        return False
+    if secondcharacter not in 'abcdefgh':
+        return False
+    
+    return True, print(f"num_queen_black:{num_queen_black}, num_queen_white:{num_queen_white}, num_black:{num_black}, num_white:{num_white}")
+ 
 
 
 rightboard = {'1h':'bbishop', '2a': 'bqueen', '2g':'wbishop', '5h':'wqueen'}
 wrongboard = {'1h':'bbishop', '2a': 'wqueen', '2g':'wbishop', '9h':'wqueen'}
+#isValidChessBoard(rightboard)
+isValidChessBoard(rightboard)
+# %%
