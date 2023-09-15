@@ -56,6 +56,8 @@ def isValidChessBoard(theboard):
     
     # to return the True or False
     if num_queen_white > 1 or num_queen_black > 1:
+    # just a remider
+    # if I type a or b > 1, it will become answering which one > 1 but not the condition I want to ask.
         return False
     if num_black > 16 or num_white > 16:
         return False
